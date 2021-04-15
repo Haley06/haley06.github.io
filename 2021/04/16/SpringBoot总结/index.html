@@ -1,0 +1,995 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="SpringBoot初认识javase:OOP       mysql:持久化       html+css+js+jQuery+框架       javaweb:独立开发MVC三层架构网站:原始        ssm:框架,简化了我们的开发流程,配置文件开始较为复杂        war包:tomcat运行 spring再简化:SpringBoot:   微服务架构!  导jar包,内嵌tomc">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SpringBoot总结">
+<meta property="og:url" content="http://haley06.com/2021/04/16/SpringBoot%E6%80%BB%E7%BB%93/index.html">
+<meta property="og:site_name" content="haley">
+<meta property="og:description" content="SpringBoot初认识javase:OOP       mysql:持久化       html+css+js+jQuery+框架       javaweb:独立开发MVC三层架构网站:原始        ssm:框架,简化了我们的开发流程,配置文件开始较为复杂        war包:tomcat运行 spring再简化:SpringBoot:   微服务架构!  导jar包,内嵌tomc">
+<meta property="og:locale">
+<meta property="og:image" content="c:/Users/86138/AppData/Roaming/Typora/typora-user-images/image-20210407201207494.png">
+<meta property="article:published_time" content="2021-04-15T19:59:04.000Z">
+<meta property="article:modified_time" content="2021-04-15T11:59:18.340Z">
+<meta property="article:author" content="haley06">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="c:/Users/86138/AppData/Roaming/Typora/typora-user-images/image-20210407201207494.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://haley06.com/2021/04/16/SpringBoot总结/"/>
+
+
+
+
+
+  <title>SpringBoot总结 | haley</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">haley</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://haley06.com/2021/04/16/SpringBoot%E6%80%BB%E7%BB%93/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="haley">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">SpringBoot总结</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-04-16T03:59:04+08:00">
+                2021-04-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="SpringBoot"><a href="#SpringBoot" class="headerlink" title="SpringBoot"></a>SpringBoot</h1><h2 id="初认识"><a href="#初认识" class="headerlink" title="初认识"></a>初认识</h2><p>javase:OOP<br>       mysql:持久化<br>       html+css+js+jQuery+框架<br>       javaweb:独立开发MVC三层架构网站:原始<br>        ssm:框架,简化了我们的开发流程,配置文件开始较为复杂<br>        war包:tomcat运行</p>
+<p>spring再简化:SpringBoot:   微服务架构!  导jar包,内嵌tomcat</p>
+<p>​                                            (最核心:自动装配原理  重要  谈资);<br>​                                                   (配置如何编写)<br>​                                                    (集成web开发:业务核心)<br>​                                                   (集成数据库:Druid)<br>​                                                   (分布式开发:Dubbo(RPC) zookeeper)<br>​                                                    swagger:接口文档<br>​                                                    任务调度<br>​                                                  SpringSecuity:Shiro</p>
+<p>​        服务越来越多:<br>​                            springcloud:<br>​                                                微服务<br>​                                                springcloud入门<br>​                                                Restful 接口<br>​                                                Eureka注册中心<br>​                                                Ribon 附带均衡<br>​                                                Feign  附带均衡<br>​                                                HyStrix<br>​                                                Zuul:路由网关<br>​                                                SpringCloud:git</p>
+<h3 id="回顾spring"><a href="#回顾spring" class="headerlink" title="回顾spring"></a>回顾spring</h3><p>1.Spring是一个开源框架，2003 年兴起的一个轻量级的Java 开发框架，作者：Rod                 Johnson<br>            <strong>Spring是为了解决企业级应用开发的复杂性而创建的，简化开发。</strong></p>
+<p>2.Spring是如何简化Java开发的</p>
+<p>​    为了降低Java开发的复杂性，Spring采用了以下4种关键策略：<br>​            1、基于POJO的轻量级和最小侵入性编程，所有东西都是bean；<br>​            2、通过IOC，依赖注入（DI）和面向接口实现松耦合；<br>​            3、基于切面（AOP）和惯例进行声明式编程；<br>​            4、通过切面和模版减少样式代码，RedisTemplate，xxxTemplate；</p>
+<p>​    程序员=数据结构+算法<br>​            码农=面向对象+框架<br>​            面试:软实力:聊天+举止+谈吐+见解</p>
+<h3 id="SpringBoot-1"><a href="#SpringBoot-1" class="headerlink" title="SpringBoot"></a>SpringBoot</h3><p>what?<br>                就是一个javaweb的开发框架，和SpringMVC类似，对比其他javaweb框架的好处，官方说是简化开发，约定大于配置，  you can “just run”，能迅速的开发web应用，几行代码开发一个http接口。</p>
+<p>Spring Boot 基于 Spring 开发，Spirng Boot 本身并不提供 Spring 框架的核心特性以及扩展功能，只是用于快速、敏捷地开发新一代基于 Spring 框架的应用程序。也就是说，它并不是用来替代 Spring 的解决方案，而是和 Spring 框架紧密结合用于提升 Spring 开发者体验的工具。Spring Boot 以<strong>约定大于配置的核心思想</strong>，默认帮我们进行了很多设置，多数 Spring Boot 应用只需要很少的 Spring 配置。同时它集成了大量常用的第三方库配置（例如 Redis、MongoDB、Jpa、RabbitMQ、Quartz 等等），Spring Boot 应用中这些第三方库几乎可以零配置的开箱即用。</p>
+<p>简单来说就是SpringBoot其实不是什么新的框架，它默认配置了很多框架的使用方式，就像maven整合了所有的jar包，spring boot整合了所有的框架 。</p>
+<p>Spring Boot 出生名门，从一开始就站在一个比较高的起点，又经过这几年的发展，生态足够完善，Spring Boot 已经当之无愧成为 Java 领域最热门的技术。</p>
+<p><strong>Spring Boot的主要优点：</strong></p>
+<ul>
+<li>为所有Spring开发者更快的入门</li>
+<li><strong>开箱即用</strong>，提供各种默认配置来简化项目配置</li>
+<li>内嵌式容器简化Web项目</li>
+<li>没有冗余代码生成和XML配置的要求</li>
+</ul>
+<h3 id="微服务"><a href="#微服务" class="headerlink" title="微服务"></a>微服务</h3><ul>
+<li><p>什么是微服务?</p>
+<pre><code>***\*微服务\****是一种体系结构样式，将单个应用程序划分为较小的服务单元，并在微服务之间使用HTTP的API进行资源访问和操作。
+    ***\*微服务\****体系结构的演变更像一家公司的发展过程。从最初的小公司到随后的大群。大的群可以分为多个子公司，每个子公司都有自己的业务、员工，各自发展，互不影响，加起来威力无穷。
+程序:高内聚,低耦合
+</code></pre>
+</li>
+<li><p>MVC三层(module,view,controller)架构    MVVM  </p>
+</li>
+<li><p>单体应用架构</p>
+</li>
+<li><p>微服务架构(业务:service–&gt;userservice===&gt;模块化</p>
+<pre><code>springmvc,controller---&gt;提供接口):
+</code></pre>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_43458555/article/details/108468384">https://blog.csdn.net/qq_43458555/article/details/108468384</a></p>
+<p>​        </p>
+</li>
+</ul>
+<h2 id="springboot"><a href="#springboot" class="headerlink" title="springboot"></a>springboot</h2><p>helloworld:在spring官网:<a target="_blank" rel="noopener" href="https://start.spring.io/">https://start.spring.io/</a> 创建后下载 idea打开即可<br>        一般开发在idea中创建</p>
+<h2 id="springboot目录结构"><a href="#springboot目录结构" class="headerlink" title="springboot目录结构"></a>springboot目录结构</h2><blockquote>
+<p>/src/main 项目根目录<br>       /java  java源代码目录<br>       /resources/static 静态资源目录<br>        /resources/templates 表示层页面目录<br>        /resources/application.properties  spring boot 配置文件<br>        /test 测试文件目录</p>
+</blockquote>
+<ul>
+<li><p>springboot中约定</p>
+<ul>
+<li>maven目录结构,默认有resources文件夹,存放资源配置文件。 src/main/resources   src/main/java 默认编译生成的类都在target文件夹下面</li>
+<li>springboot默认配置文件必须是 也只能是application.命名的yml或properties文件且唯一</li>
+<li>application.yml中默认属性.数据库连接信息必须是以spring:dataresource:为前缀;多环境配置。该属性可以根据运行环境自动读取不同的配置文件;端口号,请求路径等</li>
+</ul>
+</li>
+<li><p>springboot入口类</p>
+<ul>
+<li>入口类名通常以*Application结尾</li>
+<li>入口类加@SpringbootApplication注解</li>
+<li>利用SpringApplication.run()方法启动应用</li>
+</ul>
+</li>
+<li><p>springboot常用配置</p>
+<table>
+<thead>
+<tr>
+<th>配置名称</th>
+<th>默认值</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>server.port</td>
+<td>80</td>
+<td>端口号</td>
+</tr>
+<tr>
+<td>server.servlet.context-path</td>
+<td>/</td>
+<td>设置应用上下文</td>
+</tr>
+<tr>
+<td>logging.file</td>
+<td>无</td>
+<td>日志文件输出路径</td>
+</tr>
+<tr>
+<td>logging.level</td>
+<td>info</td>
+<td>最低日志输出级别</td>
+</tr>
+<tr>
+<td>spring.dataresource.*</td>
+<td></td>
+<td>与数据库相关配置</td>
+</tr>
+<tr>
+<td>debug</td>
+<td>false</td>
+<td>开启/关闭 调试模式</td>
+</tr>
+</tbody></table>
+</li>
+<li><p>springboot注解简介</p>
+<ul>
+<li><p>jdk和jar区别</p>
+<ul>
+<li><p>JDK 是Java SE Development Kit的简称， 它提供java运行的一个环境</p>
+</li>
+<li><p>jar包就是别人已经写好的一些类，然后将这些类进行打包，你可以将这些jar包引入你的项目中，然后就可以直接使用这些jar包中的类和属性了，这些jar包一般都会放在lib目录下的</p>
+</li>
+</ul>
+</li>
+<li><p>注解</p>
+<ul>
+<li>注解是代码里的特殊标记,可以在编译,类加载,运行时被读取,并执行相关处理.</li>
+<li>通过注解开发人员可以在不改变原有代码和逻辑情况下在源代码中嵌入补充信息</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>springboot启动流程</p>
+<ul>
+<li><p>加载配置文件 application.yml</p>
+</li>
+<li><p>自动装配</p>
+<table>
+<thead>
+<tr>
+<th>ArtifactId</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>spring-boot-starter-web</td>
+<td>增加web支持</td>
+</tr>
+<tr>
+<td>spring-boot-starter-data-jpa</td>
+<td>对JPA支持,集成Hibernate</td>
+</tr>
+<tr>
+<td>spring-boot-starter-logging</td>
+<td>增加logback日志支持</td>
+</tr>
+<tr>
+<td>spring-boot-starter-test</td>
+<td>集成jUnit单元测试框架</td>
+</tr>
+</tbody></table>
+</li>
+<li><p>加载组件 @Repository @Service @Controller @Entity</p>
+</li>
+<li><p>应用初始化</p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="第一个Springboot"><a href="#第一个Springboot" class="headerlink" title="第一个Springboot"></a>第一个Springboot</h2><h3 id="常用注解"><a href="#常用注解" class="headerlink" title="常用注解"></a>常用注解</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//@Component：泛指组件，可配合CommandLineRunner使用，在程序启动后执行一些基础任务。 可配合@AutoWired</span></span><br><span class="line">    </span><br><span class="line"><span class="comment">//@Controller：用于定义控制器类，在Spring项目中由控制器负责将用户发来的URL请求转发到对应的服务接口(service层)，一般这个注解在类中，通常配合注解@RequestMapping：参数较复杂，后有详细说明</span></span><br><span class="line">    还可以用于重定向,通过thymeleaf返回一些界面</span><br><span class="line">    </span><br><span class="line"><span class="comment">//@Service：一般用于修饰service层的组件。</span></span><br><span class="line">    </span><br><span class="line"><span class="comment">//@Repository：使用@Repository注解可以确保DAO或者repositories提供异常转译，这个注解修饰的DAO或者repositories类会被ComponetScan发现并配置，同时也不需要为它们提供XML配置项。</span></span><br><span class="line"></span><br><span class="line"> <span class="comment">//RestController里有主要包括以下两个注解</span></span><br><span class="line"><span class="meta">@Controller</span> 处理http请求返回给java前端的json对象</span><br><span class="line"><span class="meta">@ResponseBody</span>注解用于将 Controller 的方法返回的对象，通过 HttpMessageConverter 接口转换为指定格式的  即是将函数的返回值直接填入HTTP响应体中</span><br><span class="line"> </span><br><span class="line"> <span class="comment">//@PostMapping(&quot;/post&quot;)</span></span><br><span class="line"> 处理前端发来的post请求</span><br><span class="line"> 内含有<span class="meta">@RequestMapping</span>注解：是一个用来处理请求地址映射的注解，使用的范围是：类或方法</span><br><span class="line">    </span><br><span class="line"> <span class="comment">//@GetMappiing 与postMapping类似</span></span><br><span class="line"> <span class="meta">@GetMapping(&#123;&quot;/welcome&quot;,&quot;/hi&quot;&#125;)</span></span><br><span class="line"> 表示http:<span class="comment">//localhost:8080/hi 或者http://localhost:8080/welcome都可以访问同样页面</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//@RequestMapping(“/path”)表示该控制器处理所有“/path”的URL请求。RequestMapping是一个用来处理请求地址映射的注解，可用于类或方法上。用于类上，表示类中的所有响应请求的方法都是以该地址作为父路径。</span></span><br><span class="line">该注解有六个属性：</span><br><span class="line">	params：指定request中必须包含某些参数值，才让该方法处理。</span><br><span class="line">	headers：指定request中必须包含某些指定的header值，才能让该方法处理请求。</span><br><span class="line">	value：指定请求的实际地址，指定的地址可以是URI Template模式。</span><br><span class="line">	method：指定请求的method类型，GET、POST、PUT、DELETE等。</span><br><span class="line">	consumes：指定处理请求的提交内容类型(Content-Type)，如				application/json，text/html。</span><br><span class="line">	produces：指定返回的内容类型，仅当request请求头中的Accept类型中包含该指定类型才返回。</span><br><span class="line">     </span><br><span class="line"><span class="comment">// @Value：注入application.properties配置的属性的值</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//@Configuration：等同于Spring的XML配置文件，使用Java代码可以检查类型安全，如果有些第三方库需要用到xml文件，建议仍然通过@Configuration类作为项目的配置主类。</span></span><br><span class="line">    </span><br><span class="line"><span class="comment">//@EnableAutoConfiguration：根据添加的jar依赖自动配置你的Spring应用。</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//@ConfigurationProperties</span></span><br><span class="line">详解见https:<span class="comment">//hello.blog.csdn.net/article/details/104575745</span></span><br><span class="line"></span><br><span class="line">使用<span class="meta">@ConfigurationProperties</span>注解到普通类，然后再通过<span class="meta">@EnableConfigurationProperties</span>定义为Bean</span><br><span class="line">    </span><br><span class="line">通常与EnableConfigurationProperties一起使用,通过<span class="meta">@EnableConfigurationProperties</span>对User进行实例化时，便会使用到<span class="meta">@ConfigurationProperties</span>的功能，对属性进行匹配赋值</span><br><span class="line"></span><br><span class="line"><span class="comment">//@Autowired：自动导入依赖的bean，把配置好的Bean拿来用，完成属性、方法的组装，它可以对类成员变量、方法及构造函数进行标注，完成自动装配的工作，当加上(required=false)时，就算找不到bean也不报错。</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//@RequestParam：用在方法的参数前面。多用于post请求传参数</span></span><br><span class="line">    它的后边括号内是前端传来的参数名</span><br><span class="line">    <span class="meta">@RequestParam(&quot;sid&quot;)</span> <span class="keyword">int</span> studentId</span><br><span class="line">    studentId为传来的参数值</span><br><span class="line"> 测试: http:<span class="comment">//localhost:8081/515Code/say?sid=20204816</span></span><br><span class="line"><span class="comment">//升级:</span></span><br><span class="line">	<span class="meta">@RequestParam(value=&quot;sid&quot;,required = false,defaultValue = &quot;0&quot;)</span>  <span class="keyword">int</span> studentId</span><br><span class="line">	测试链接默认不传为<span class="number">0</span>,即返回的studentId值不传默认为<span class="number">0</span>，默认必须传参进来</span><br><span class="line">        </span><br><span class="line"><span class="comment">//@PathVariable：路径变量。多用于get请求传参数</span></span><br><span class="line">参数传递的方法:例如</span><br><span class="line">     <span class="meta">@GetMapping(&quot;say/&#123;id&#125;&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">say</span><span class="params">(<span class="meta">@PathVariable(&quot;id&quot;)</span> <span class="keyword">int</span> studentId)</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;学生的id是&quot;</span>+studentId;</span><br><span class="line">    &#125;</span><br><span class="line">测试:http:<span class="comment">//localhost:8081/515Code/say/20204816</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//@Entity：@Table(name=””)：表明这是一个实体类。这两个注解一般一块使用，但是如果表名和实体类名相同的话，@Table可以省略。</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//@Id 表示实体类的某成员变量是数据库主键</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//@GeneratedValue表示自增</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//@Transactional表示事务 可以自动不成功回滚</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//@NotNUll表示字段不能为空</span></span><br><span class="line"><span class="comment">//@Service用于service层类中</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//@JsonInclude(JsonInclude.Include.NON_NULL)</span></span><br><span class="line">用于返回http协议时,若返回的内容(data)为空,或者只返回code,message,json返回前端的对象就没有,而不是<span class="keyword">null</span></span><br><span class="line">    </span><br><span class="line"><span class="comment">//@JsonProperty(&quot;total&quot;)加在成员变量上最后返回的字段是total,而不是成员变量的名字</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="校验注解"><a href="#校验注解" class="headerlink" title="校验注解"></a>校验注解</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@NotNull</span> 某实体类成员变量不能为空 注意别导错包 javax里的</span><br><span class="line"><span class="meta">@NotNull(message = &quot;学费找不到&quot;)</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="配置文件"><a href="#配置文件" class="headerlink" title="配置文件"></a>配置文件</h3><p>application.properties</p>
+<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">server.port</span>=<span class="string">8081</span></span><br><span class="line"><span class="comment">#url根目录</span></span><br><span class="line"><span class="comment"># 现在访问http://localhost:8081/515Code/hi才能访问到</span></span><br><span class="line"><span class="meta">server.servlet.context-path</span>=<span class="string">/515Code</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>application.yml</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">server:</span></span><br><span class="line">  <span class="attr">port:</span> <span class="number">8081</span></span><br><span class="line">  <span class="attr">servlet:</span></span><br><span class="line">    <span class="attr">context-path:</span> <span class="string">/515Code</span></span><br><span class="line"><span class="attr">todo:</span></span><br><span class="line">  <span class="attr">date:</span> <span class="string">&quot;3月25日&quot;</span></span><br><span class="line">  <span class="attr">thing:</span> <span class="string">今天是$&#123;todo.date&#125;,go</span> <span class="string">cinema</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 数据库配置</span></span><br><span class="line"><span class="attr">spring:</span></span><br><span class="line">  <span class="attr">datasource:</span></span><br><span class="line">    <span class="attr">driver-class-name:</span> <span class="string">com.mysql.cj.jdbc.Driver</span></span><br><span class="line">    <span class="attr">url:</span> <span class="string">jdbc:mysql://localhost:3306/student</span></span><br><span class="line">    <span class="attr">username:</span> <span class="string">root</span></span><br><span class="line">    <span class="attr">password:</span> <span class="string">123456hj</span></span><br><span class="line">    </span><br><span class="line">  <span class="attr">jpa:</span></span><br><span class="line">    <span class="attr">show-sql:</span> <span class="literal">true</span></span><br><span class="line">    <span class="attr">hibernate:</span></span><br><span class="line"><span class="comment">#   create   自动创建飙到数据库(有原来的表删除后重新创建)</span></span><br><span class="line"><span class="comment">#   create-drop  结束程序删表</span></span><br><span class="line"><span class="comment">#   update 每次更新，不会删除原表 最安全</span></span><br><span class="line"><span class="comment">#   validate 验证字段类型是否一致</span></span><br><span class="line">      <span class="attr">ddl-auto:</span> <span class="string">create/update/create-drop</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a>数据库</h2><ul>
+<li>数据库是“按照数据结构来组织、存储和管理数据的仓库”。是一个长期存储在<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E8%AE%A1%E7%AE%97%E6%9C%BA/140338">计算机</a>内的、有组织的、可共享的、统一管理的大量数据的集合。</li>
+<li>数据库是以一定方式储存在一起,能与多个用户共享,具有尽可能小的冗余度,与应用程序彼此独立的数据集合,可视为“电子化”的文件柜–存储电子文件的处所,用户可以对文件中的数据进行新增,查询,更新,删除等操作。</li>
+</ul>
+<h3 id="Mysql"><a href="#Mysql" class="headerlink" title="Mysql"></a>Mysql</h3><ul>
+<li>是一个关系型数据库管理系统</li>
+<li>关系数据库将数据保存在不同的表中,而不是将所有数据放在一个大仓库内,这样就增加了速度并提高了灵活性</li>
+<li>mysql使用sql语言用于访问数据库的最常用标准化语言</li>
+<li>mysql采用了双授权政策,分为社区和商业,由于体积小,速度快,总体拥有成本低,尤其是开放这一点,一般中小型网站开发都选mysql作为网站数据库</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="https://www.515code.com/posts/fm1u9eli/">https://www.515code.com/posts/fm1u9eli/</a></p>
+<p>数据类型:<a target="_blank" rel="noopener" href="https://www.runoob.com/mysql/mysql-data-types.html">https://www.runoob.com/mysql/mysql-data-types.html</a></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">DECIMAL</span>(<span class="number">5</span>,<span class="number">2</span>) 最大存储<span class="number">999.99</span> 表示一共<span class="number">5</span>位数,小数点<span class="number">2</span>位</span><br><span class="line"><span class="type">Float</span>也可以向上边一样设置</span><br><span class="line"><span class="type">varchar</span> 长字符串</span><br><span class="line"></span><br><span class="line">常用字符编码: UTF<span class="number">-8</span><span class="operator">/</span>GBK</span><br><span class="line">		utf<span class="number">-8</span>mb4可以放表情</span><br><span class="line"></span><br><span class="line">Mysql语句规范</span><br><span class="line"><span class="comment">-- 关键字函数名 全部大写</span></span><br><span class="line"><span class="comment">-- 数据库名,表名,列名全部小写</span></span><br><span class="line"><span class="comment">-- sql语句必须分号结尾</span></span><br><span class="line"><span class="comment">-- 自动编号 Auto_Increment</span></span><br><span class="line">   默认起始值为<span class="number">1</span>,增量为<span class="number">1</span></span><br><span class="line"><span class="comment">-- PRIMIARY KEY  与Auto_Increment配合使用</span></span><br><span class="line">  主键约束   每张表只能有一个主键 记录唯一 自动<span class="keyword">not</span> <span class="keyword">NUll</span> 可以重复列值</span><br><span class="line"><span class="comment">-- UNIQUE KEY</span></span><br><span class="line">	唯一约束保证记录唯一 字段可以为空 一张表存在多个唯一约束 不可以重复列值                                                  </span><br><span class="line"> <span class="comment">-- default默认值设置 </span></span><br><span class="line"> </span><br><span class="line"> </span><br></pre></td></tr></table></figure>
+
+<h2 id="SpringBoot数据库"><a href="#SpringBoot数据库" class="headerlink" title="SpringBoot数据库"></a>SpringBoot数据库</h2><h3 id="数据库操作"><a href="#数据库操作" class="headerlink" title="数据库操作"></a>数据库操作</h3><ul>
+<li><p>使用Spring-Data-Jpa</p>
+</li>
+<li><p>JPA（Java Persistentence API）定义了一系列对象持久化标准</p>
+</li>
+<li><p>下面来设计RESTful API</p>
+<table>
+<thead>
+<tr>
+<th>请求方式</th>
+<th>路径</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>GET</td>
+<td>/515Code/students</td>
+<td>获取所有学生信息</td>
+</tr>
+<tr>
+<td>POST</td>
+<td>/515Code/students</td>
+<td>创建一条学生信息</td>
+</tr>
+<tr>
+<td>GET</td>
+<td>/515Code/students/id</td>
+<td>通过学号查询学生</td>
+</tr>
+<tr>
+<td>PUT</td>
+<td>/515Code/students/id</td>
+<td>通过学号更新学生</td>
+</tr>
+</tbody></table>
+</li>
+</ul>
+<h2 id="事务"><a href="#事务" class="headerlink" title="事务"></a>事务</h2><ul>
+<li>数据库事务指的是单个逻辑工作单元执行的一系列操作，要么完全执行，要么完全不执行</li>
+</ul>
+<h2 id="单元测试"><a href="#单元测试" class="headerlink" title="单元测试"></a>单元测试</h2><ul>
+<li>单元测试，指对软件的最小可测试单元进行检查和验证，对于单元测试中单元含义，一般来说，根据实际情况判断具体含义，如c语言是一个函数，java是一个类，图形化是一个窗口或菜单</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//用到的注解</span></span><br><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="meta">@RunWith(SpringRunner.class)</span></span><br><span class="line"><span class="meta">@SpringBootTest</span></span><br><span class="line">可以使用Assert方法测试</span><br></pre></td></tr></table></figure>
+
+<h3 id="管理权限"><a href="#管理权限" class="headerlink" title="管理权限"></a>管理权限</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Repository是持久层用于增删改查数据库</span><br><span class="line">Service调用Repository方法为逻辑层进行业务开发</span><br><span class="line">controller层进行前端交互处理和验证</span><br><span class="line">entity实体类</span><br></pre></td></tr></table></figure>
+
+<h2 id="Aop"><a href="#Aop" class="headerlink" title="Aop"></a>Aop</h2><p><a target="_blank" rel="noopener" href="https://www.515code.com/posts/egs95cdu/">https://www.515code.com/posts/egs95cdu/</a></p>
+<p><img src="C:\Users\86138\AppData\Roaming\Typora\typora-user-images\image-20210407201207494.png" alt="image-20210407201207494"></p>
+<h3 id="为什么使用Aop"><a href="#为什么使用Aop" class="headerlink" title="为什么使用Aop"></a>为什么使用Aop</h3><ul>
+<li><p>解决分离问题</p>
+<ul>
+<li>水平分离：展示层–》服务层–》持久层（存数据库dao）</li>
+<li>垂直分离–》模块划分（如订单，库存）</li>
+<li>切面分离：分离功能性需求和非功能性需求</li>
+</ul>
+</li>
+<li><p>好处</p>
+<ul>
+<li>集中处理某一点关注</li>
+<li>增强代码可维护性</li>
+</ul>
+</li>
+<li><p>应用场景</p>
+<ul>
+<li>权限控制</li>
+<li>缓存控制</li>
+<li>审计日志</li>
+<li>性能监控</li>
+<li>异常处理</li>
+<li>分布式追踪</li>
+</ul>
+</li>
+</ul>
+<h3 id="AOP术语"><a href="#AOP术语" class="headerlink" title="AOP术语"></a>AOP术语</h3><ul>
+<li><p>$Target$:目标类，即需要代理的类 例如： UserService</p>
+</li>
+<li><p>$JointPoint$:连接点  所谓连接点是指那些可能被拦截到的方法 例如：所有的方法</p>
+</li>
+<li><p>$PointCut$: 切入点  已经被增强的连接点  如 addUser()</p>
+</li>
+<li><p>$advice$:通知/增强  增强代码, 例如After/Before</p>
+</li>
+<li><p>$Weaving$:织入 是指把增强advice应用到目标对象target来创建新的代理对象proxy的过程</p>
+</li>
+<li><p>$proxy$:代理类 实现aop方法</p>
+</li>
+<li><p>$Aspect$:切面 是切入点pointcut和通知advice结合</p>
+</li>
+<li><p><strong>连接点包含切入点</strong></p>
+</li>
+<li><p>$常见通知$:</p>
+<ul>
+<li>前置通知:在我们执行目标方法之前运行@Before</li>
+<li>后置通知:在我们执行目标方法运行结束后,不管有没有异常@After</li>
+<li>返回通知:在我们目标方法正常返回值后运行(@AfterReturning)</li>
+<li>异常通知:在我们目标方法出现异常后运行(@AfterThrowing)</li>
+<li>环绕通知:动态代理,需要手动执行 jointPoint.proceed()(其实就是执行我们的目标方法执行之前相当于前置通知,执行之后相当于后置通知)  @Around</li>
+</ul>
+</li>
+<li><p>加aop依赖给poxm.xml</p>
+</li>
+</ul>
+<h3 id="演示"><a href="#演示" class="headerlink" title="演示"></a>演示</h3><ul>
+<li><p>声明注解进行拦截@annotation</p>
+</li>
+<li><p>excution表达式 </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">修饰符pattern</span><br><span class="line">返回值pattern</span><br><span class="line">描述包名</span><br><span class="line">方法名(参数)</span><br><span class="line">方法抛出异常pattern</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="JAVA日志"><a href="#JAVA日志" class="headerlink" title="JAVA日志"></a>JAVA日志</h2><ul>
+<li><p>日志:保存描述系统运行状态的信息</p>
+</li>
+<li><p>日志框架:能实现日志输出的工具包</p>
+</li>
+<li><p>日志框架功能:定制输出目标(输出到哪个位置),格式,选择性输出</p>
+</li>
+<li><p>常见日志框架:</p>
+<ul>
+<li>日志门面:是日志实现的抽象层  JCL SLF4j</li>
+<li>日志实现:具体的日志功能的实现。如JUL,log4j,log4j2,logback</li>
+</ul>
+</li>
+<li><p><strong>SLF4j</strong>:实现了日志框架的通用api</p>
+</li>
+<li><p>logback是具体日志框架 和log4j是同一个作者</p>
+</li>
+<li><p>slf4j和logback可以简单看作jdbc和其具体数据库的JDBC的jar包关系</p>
+</li>
+<li><p>推荐使用slf4j,不直接使用logback</p>
+</li>
+</ul>
+<p>日志级别:<a target="_blank" rel="noopener" href="https://www.515code.com/posts/khsh8lxz/">https://www.515code.com/posts/khsh8lxz/</a>    ctrl+N可以idea进行类搜索</p>
+<h2 id="数据库连接补充"><a href="#数据库连接补充" class="headerlink" title="数据库连接补充"></a>数据库连接补充</h2><h3 id="注解"><a href="#注解" class="headerlink" title="注解"></a>注解</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//@Entity:每个持久化POJO类都是一个实体Bean,用于映射数据库表</span></span><br><span class="line"><span class="comment">//@Table:声明此对象映射到数据库的数据表,该注释不是必须的,如果没有,系统会使用默认值(实体类短名)</span></span><br><span class="line"><span class="comment">//@Id 用于指定表的主键</span></span><br><span class="line"><span class="comment">//@GeneratedValue: 默认使用主键方式自增 hibernate会自动生成一个名为HIBERNATE_SEQUENCE的序列</span></span><br><span class="line"><span class="comment">//@Column:用于映射属性名字段名,没有该注解,hibernate会自动根据属性名生成数据表的字段名.如name映射字段NAME;多字母属性如username会自动映射为USER_NAME</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Innodb才支持主键自增</li>
+</ul>
+<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><ul>
+<li><p>java中Integer默认为null,int默认为0</p>
+</li>
+<li><p>vo http最外层返回的对象  层层封装的结果 ==controller的方法也返回的一定是vo对象==</p>
+</li>
+<li><p>controller层要返回数据会用到service层,要注入service实例  使用service层的方法既是返回vo对象给前端,又会把前端提交的数据通过调用该方法传入service层</p>
+</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2021/04/16/Spring%E6%80%BB%E7%BB%93/" rel="next" title="Spring总结">
+                <i class="fa fa-chevron-left"></i> Spring总结
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name"></p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#SpringBoot"><span class="nav-number">1.</span> <span class="nav-text">SpringBoot</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%9D%E8%AE%A4%E8%AF%86"><span class="nav-number">1.1.</span> <span class="nav-text">初认识</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9B%9E%E9%A1%BEspring"><span class="nav-number">1.1.1.</span> <span class="nav-text">回顾spring</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SpringBoot-1"><span class="nav-number">1.1.2.</span> <span class="nav-text">SpringBoot</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BE%AE%E6%9C%8D%E5%8A%A1"><span class="nav-number">1.1.3.</span> <span class="nav-text">微服务</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#springboot"><span class="nav-number">1.2.</span> <span class="nav-text">springboot</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#springboot%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84"><span class="nav-number">1.3.</span> <span class="nav-text">springboot目录结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%B8%80%E4%B8%AASpringboot"><span class="nav-number">1.4.</span> <span class="nav-text">第一个Springboot</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8%E6%B3%A8%E8%A7%A3"><span class="nav-number">1.4.1.</span> <span class="nav-text">常用注解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A0%A1%E9%AA%8C%E6%B3%A8%E8%A7%A3"><span class="nav-number">1.4.2.</span> <span class="nav-text">校验注解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="nav-number">1.4.3.</span> <span class="nav-text">配置文件</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="nav-number">1.5.</span> <span class="nav-text">数据库</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Mysql"><span class="nav-number">1.5.1.</span> <span class="nav-text">Mysql</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SpringBoot%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="nav-number">1.6.</span> <span class="nav-text">SpringBoot数据库</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93%E6%93%8D%E4%BD%9C"><span class="nav-number">1.6.1.</span> <span class="nav-text">数据库操作</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8B%E5%8A%A1"><span class="nav-number">1.7.</span> <span class="nav-text">事务</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95"><span class="nav-number">1.8.</span> <span class="nav-text">单元测试</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AE%A1%E7%90%86%E6%9D%83%E9%99%90"><span class="nav-number">1.8.1.</span> <span class="nav-text">管理权限</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Aop"><span class="nav-number">1.9.</span> <span class="nav-text">Aop</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E4%BD%BF%E7%94%A8Aop"><span class="nav-number">1.9.1.</span> <span class="nav-text">为什么使用Aop</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#AOP%E6%9C%AF%E8%AF%AD"><span class="nav-number">1.9.2.</span> <span class="nav-text">AOP术语</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%BC%94%E7%A4%BA"><span class="nav-number">1.9.3.</span> <span class="nav-text">演示</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JAVA%E6%97%A5%E5%BF%97"><span class="nav-number">1.10.</span> <span class="nav-text">JAVA日志</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%9E%E6%8E%A5%E8%A1%A5%E5%85%85"><span class="nav-number">1.11.</span> <span class="nav-text">数据库连接补充</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B3%A8%E8%A7%A3"><span class="nav-number">1.11.1.</span> <span class="nav-text">注解</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B6%E4%BB%96"><span class="nav-number">1.12.</span> <span class="nav-text">其他</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">haley06</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
