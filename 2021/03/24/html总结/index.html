@@ -87,7 +87,7 @@
 <meta property="og:description" content="HTML学习一 、了解网页1.什么是网页？        网站：因特网上根据一定规则，使用HTML等制作的用于展示特定内容相关的网页集合。        网页：网站中一页，是构成网站基本元素        格式：通常为HTML格式文件，它要通过浏览器阅读。        组成：图片，链接，文字，声音，视频等元素。        命名：通常以**.htm或.html**后缀结尾，俗称HTML文件 h">
 <meta property="og:locale">
 <meta property="article:published_time" content="2021-03-23T18:11:18.000Z">
-<meta property="article:modified_time" content="2021-05-02T01:58:11.546Z">
+<meta property="article:modified_time" content="2021-05-04T09:20:40.407Z">
 <meta property="article:author" content="haley06">
 <meta name="twitter:card" content="summary">
 
@@ -383,7 +383,7 @@
 <h3 id="段落和换行标签（重要）"><a href="#段落和换行标签（重要）" class="headerlink" title="段落和换行标签（重要）"></a>段落和换行标签（重要）</h3><h4 id="段落"><a href="#段落" class="headerlink" title="段落"></a>段落</h4><p>在网页中，要把文字有条理地显示出来，就需要将这些文字分段表示。在HTML标签中，<p>标签用于定义段落，它可以将整个网页分为若干个段落<br>==标签语义==：把HTML文档分割为若干段落</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>我是一个段落标签<span class="tag">&lt;/<span class="name">p</span>&gt;</span>  （表一段）</span><br><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>我是一个段落标签<span class="tag">&lt;/<span class="name">p</span>&gt;</span>  （表第二段）</span><br></pre></td></tr></table></figure>
 
-<p>P为paragrapht(alt+z 自动换行)<br>特点：1. 文本在一个段中会根据浏览器窗口的大小自动换行<br>2.段落和段落之间保有空隙</p>
+<p>P为paragrapht(alt+z 自动换行)<br>特点：1. 文本在一个段中会根据浏览器窗口的大小自动换行<br>            2.段落和段落之间保有空隙</p>
 <h4 id="换行"><a href="#换行" class="headerlink" title="换行"></a>换行</h4><p>在HTML中，一个段落中的文字会从左到右依次排列，直到浏览器窗口右端，然后才自动换行，如果希望某段强制换行显示，就用换行标签<br/>   break打断自己,换行显示。==标签语义==：强制换行.</p>
 <p>特点：单标签，简单开始新一行，跟段落不一样，段落间会插入垂直间距</p>
 <pre><code>&lt;hr /&gt;分隔线
@@ -832,7 +832,7 @@
 </li>
 <li><p>作用域不同</p>
 <ul>
-<li>cookie和localStorage在所有同源窗口共享</li>
+<li>cookie和localStorage在所有<strong>同源窗口共享</strong></li>
 <li>sessionStorage不在不同浏览器共享,即使同一页面</li>
 </ul>
 </li>
@@ -843,11 +843,11 @@
 <li><p>link和@import的区别</p>
 <ul>
 <li><p>@import只能加载css，低版本浏览器不支持</p>
-<p>link是xhtml标签，无兼容问题</p>
+<p><em><strong>link是xhtml标签，无兼容问题</strong></em></p>
 </li>
-<li><p>link引用css时候页面载入同时加载，@import需要在页面完全加载以后，且它引用的css需要被加载完才加载</p>
+<li><p>link引用css时候页面载入同时加载，**@import需要在页面完全加载以后，且它引用的css需要被加载完才加载**</p>
 </li>
-<li><p>link支持使用js去改变样式，@import不支持，link权重高于@import</p>
+<li><p>link支持使用js去改变样式，@import不支持，<strong>link权重高于@import</strong></p>
 </li>
 </ul>
 </li>
@@ -868,7 +868,7 @@
 </li>
 </ul>
 <h2 id="meta-viewport属性"><a href="#meta-viewport属性" class="headerlink" title="meta viewport属性"></a>meta viewport属性</h2><ul>
-<li><p>移动端浏览器通常都在一个比屏幕更宽的虚拟窗口中渲染页面，这个虚拟窗口就是viewport</p>
+<li><p>移动端浏览器通常都在一个比屏幕更宽的虚拟窗口中渲染页面，这个<strong>虚拟窗口就是viewport</strong></p>
 </li>
 <li><p>meta标签作用是让当前viewport宽度等于设备宽度，同时不允许用户手动缩放</p>
 </li>
@@ -1020,6 +1020,15 @@
 
             
 
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">标签</span>
+                
+              </div>
             
 
           </nav>

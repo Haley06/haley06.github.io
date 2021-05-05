@@ -1311,14 +1311,10 @@
 
 
 
-
-
-
-
 <h4 id="盒子模型"><a href="#盒子模型" class="headerlink" title="盒子模型"></a>盒子模型</h4><p>margin   border  padding </p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">半圆：</span><br><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="css">    <span class="selector-tag">div</span>&#123;</span></span><br><span class="line"><span class="css">        <span class="attribute">width</span>:<span class="number">100px</span>;</span></span><br><span class="line"><span class="css">        <span class="attribute">height</span>:<span class="number">50px</span>;</span></span><br><span class="line"><span class="css">        <span class="attribute">margin</span>:<span class="number">30px</span>;</span></span><br><span class="line"><span class="css">        <span class="attribute">background</span>:red;</span></span><br><span class="line"><span class="css">        <span class="attribute">border-radius</span>:<span class="number">50px</span> <span class="number">50px</span> <span class="number">0</span> <span class="number">0</span>;</span></span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    					偏移位置 模糊程度 颜色</span><br><span class="line"><span class="css">    边框阴影：<span class="attribute">box-shadow</span>：<span class="number">10px</span> <span class="number">10px</span> <span class="number">100px</span> yellow；</span></span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    浮动：</span><br><span class="line"><span class="css">    	清除两侧浮动 即元素另起一行：<span class="attribute">clear</span>：both；</span></span><br><span class="line"><span class="css">    	both换为<span class="attribute">left</span>/<span class="attribute">right</span>表示清除某侧浮动</span></span><br><span class="line"><span class="css">    	<span class="attribute">none</span>表示可以浮动 </span></span><br><span class="line">    </span><br><span class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
-<h4 id="清除-浮动带来的父类边框塌陷问题"><a href="#清除-浮动带来的父类边框塌陷问题" class="headerlink" title="清除 浮动带来的父类边框塌陷问题"></a>清除 浮动带来的父类边框塌陷问题</h4><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span>.增加父级元素高度</span><br><span class="line"><span class="selector-id">#father</span>&#123;</span><br><span class="line">	boder：<span class="number">1px</span> <span class="selector-id">#000</span> solid；</span><br><span class="line">	<span class="attribute">height</span>：<span class="number">800px</span>；</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="number">2</span>.增加一个空的<span class="selector-tag">div</span>标签，清除浮动</span><br><span class="line"> &lt;div class=&quot;clear&quot;&gt;&lt;/div&gt;</span><br><span class="line"><span class="selector-class">.clear</span>&#123;</span><br><span class="line">    <span class="attribute">clear</span>:both;</span><br><span class="line">    <span class="attribute">margin</span>:<span class="number">0</span>;</span><br><span class="line">    <span class="attribute">padding</span>:<span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="number">3</span><span class="selector-class">.overflow</span></span><br><span class="line">在父级元素中增加一个<span class="attribute">overflow</span>：hidden；</span><br><span class="line"></span><br><span class="line"><span class="number">4</span>.父类添加一个伪类：after  常用</span><br><span class="line"><span class="selector-id">#father</span>&#123;</span><br><span class="line">    content：&#x27;&#x27;;</span><br><span class="line">    <span class="attribute">display</span>:block;</span><br><span class="line">    <span class="attribute">clear</span>:both;</span><br><span class="line">&#125;</span><br><span class="line"><span class="number">5</span>.或者也可以加个</span><br><span class="line"><span class="attribute">float</span>: 与子盒子浮动一样的方向,会塌陷成为子盒子大小</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h4 id="清除-浮动带来的父类边框塌陷问题"><a href="#清除-浮动带来的父类边框塌陷问题" class="headerlink" title="清除 浮动带来的父类边框塌陷问题"></a>清除 浮动带来的父类边框塌陷问题</h4><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span>.增加父级元素高度</span><br><span class="line"><span class="selector-id">#father</span>&#123;</span><br><span class="line">	boder：<span class="number">1px</span> <span class="selector-id">#000</span> solid；</span><br><span class="line">	<span class="attribute">height</span>：<span class="number">800px</span>；</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="number">2</span>.增加一个空的<span class="selector-tag">div</span>标签，清除浮动</span><br><span class="line"> &lt;div class=&quot;clear&quot;&gt;&lt;/div&gt;</span><br><span class="line"><span class="selector-class">.clear</span>&#123;</span><br><span class="line">    <span class="attribute">clear</span>:both;</span><br><span class="line">    <span class="attribute">margin</span>:<span class="number">0</span>;</span><br><span class="line">    <span class="attribute">padding</span>:<span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="number">3</span><span class="selector-class">.overflow</span></span><br><span class="line">在父级元素中增加一个<span class="attribute">overflow</span>：hidden；</span><br><span class="line"></span><br><span class="line"><span class="number">4</span>.父类添加一个伪类：after  常用</span><br><span class="line"><span class="selector-id">#father</span>&#123;</span><br><span class="line">    content：&#x27;&#x27;;</span><br><span class="line">    <span class="attribute">display</span>:block;</span><br><span class="line">    <span class="attribute">height</span>:<span class="number">0</span>;</span><br><span class="line">    <span class="attribute">visibility</span>:hidden;</span><br><span class="line">    <span class="attribute">clear</span>:both;</span><br><span class="line">&#125;</span><br><span class="line"><span class="number">5</span>.或者也可以加个</span><br><span class="line"><span class="attribute">float</span>: 与子盒子浮动一样的方向,会塌陷成为子盒子大小</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 <h4 id="定位"><a href="#定位" class="headerlink" title="定位"></a>定位</h4><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">位置保留：相保绝不保</span><br><span class="line"><span class="attribute">z-index</span>：<span class="number">999</span>（层级优先）</span><br><span class="line"><span class="attribute">opacity</span>：设置背景透明度</span><br><span class="line">ie8以前支持：</span><br><span class="line">filter： alpha（opacity=50）</span><br></pre></td></tr></table></figure>
 
@@ -1868,7 +1864,7 @@
 </code></pre>
 <p>注：<br>1.margin:0  auto;用于块级元素<br>2.行内元素或行内块元素水平居中：给父元素添加text-align:center</p>
 </li>
-<li><p>外边距合并<br>（嵌套块元素垂直外边距塌陷）<br>两个嵌套（父子）关系块元素，父 元素有上边外边距同时子元素也有上外边距，此时会塌陷较大外边距值（给子元素加外边距，父元素移动）<br>解决：<br>1.为父元素指定上边框<br>2.为父元素定义内边距<br>3.为父元素添加overflow:hidden;(多用)<br>盒子有浮动，固定，绝对定位时不会陷。</p>
+<li><p>外边距合并<br>（嵌套块元素垂直外边距塌陷）<br>两个嵌套（父子）关系块元素，父 元素有上边外边距同时子元素也有上外边距，此时会塌陷较大外边距值（给子元素加外边距，父元素移动）<br>解决：<br>1.<strong>为父元素指定上边框</strong><br>2.<strong>为父元素定义内边距</strong><br>3.为父元素添加overflow:hidden;(多用)<br>盒子有浮动，固定，绝对定位时不会陷。</p>
 <h3 id="清除内外边距"><a href="#清除内外边距" class="headerlink" title="清除内外边距"></a>清除内外边距</h3><p>浏览器默认内外边距<br>清除：</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span></span><br><span class="line">    * &#123;</span><br><span class="line"><span class="css">        <span class="attribute">margin</span>: <span class="number">0</span>;</span></span><br><span class="line"><span class="css">        <span class="attribute">padding</span>:<span class="number">0</span>;</span></span><br><span class="line">    &#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span>(通常也为css第一句话)</span><br></pre></td></tr></table></figure>
 
@@ -1951,12 +1947,10 @@
 <pre><code>    在浮动元素末尾添加一个空标签
 </code></pre>
 <p>例：<code>&lt;div style=“clear both”&gt;&lt;/div&gt;</code>或其他<code>&lt;br/&gt;</code>等<br>==新添标签必须为块级元素==（此方法结构化差，不常用）<br>‌2.父级加overflow<br>找到父盒子添加     overflow:hidden(多用）/auto/scroll<br>(但此方法无法显示溢出部分）<br>‌3.父级加after伪元素<br>css先写以下代码</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span></span><br><span class="line">     .clearfix:after &#123;</span><br><span class="line"><span class="css">            <span class="attribute">content</span>: <span class="string">&quot;&quot;</span>;</span></span><br><span class="line"><span class="css">            <span class="attribute">display</span>: block;</span></span><br><span class="line"><span class="css">            <span class="attribute">height</span>: <span class="number">0</span>;</span></span><br><span class="line"><span class="css">            <span class="attribute">clear</span>: both;</span></span><br><span class="line"><span class="css">            <span class="attribute">visibility</span>: hidden;</span></span><br><span class="line">        &#125;</span><br><span class="line">        .clearfix &#123;</span><br><span class="line"><span class="css">            <span class="comment">/* IE6、7专有 */</span></span></span><br><span class="line"><span class="css">            *zoom: <span class="number">1</span>;</span></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="css">     <span class="selector-class">.clearfix</span><span class="selector-pseudo">::after</span> &#123;</span></span><br><span class="line"><span class="css">            <span class="attribute">content</span>: <span class="string">&quot;&quot;</span>;</span></span><br><span class="line"><span class="css">            <span class="attribute">display</span>: block;</span></span><br><span class="line"><span class="css">            <span class="attribute">height</span>: <span class="number">0</span>;</span></span><br><span class="line"><span class="css">            <span class="attribute">clear</span>: both;</span></span><br><span class="line"><span class="css">            <span class="attribute">visibility</span>: hidden;</span></span><br><span class="line">        &#125;</span><br><span class="line">        .clearfix &#123;</span><br><span class="line"><span class="css">            <span class="comment">/* IE6、7专有 */</span></span></span><br><span class="line"><span class="css">            *zoom: <span class="number">1</span>;</span></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
 <p>然后找到父盒子添加类属性值（clearfix)。(常用)<br>‌4.父级加双伪元素<br>写以下代码到css</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span></span><br><span class="line">    .clearfix:before,</span><br><span class="line">    .clearfix:after &#123;</span><br><span class="line"><span class="css">        <span class="attribute">content</span>: <span class="string">&quot;&quot;</span>;</span></span><br><span class="line"><span class="css">        <span class="attribute">display</span>: block;</span></span><br><span class="line">    &#125;</span><br><span class="line"><span class="css">    <span class="selector-class">.clearfix</span><span class="selector-pseudo">::after</span> &#123;</span></span><br><span class="line"><span class="css">        <span class="attribute">clear</span>: both;</span></span><br><span class="line">    &#125;</span><br><span class="line">    .clearfix &#123;</span><br><span class="line"><span class="css">        <span class="comment">/* IE6、7专有 */</span></span></span><br><span class="line"><span class="css">        *zoom: <span class="number">1</span>;</span></span><br><span class="line">    &#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line">  </span><br></pre></td></tr></table></figure>
-
-
 
 
 
@@ -2038,7 +2032,7 @@
 <tr>
 <td>relative 相对</td>
 <td>否（保留标准流中位置）</td>
-<td>相对自身位置移动</td>
+<td><strong>相对自身位置移动</strong></td>
 <td>是</td>
 </tr>
 <tr>
@@ -2209,7 +2203,7 @@
 <li>设置：HTML页面中的文本内容（字体，大小，对齐方式等），图片的外形（宽高 边框样式，边距等），以及版面布局和外观样式。CSS可美化HTML,布局网页，使结构（HTML)与样式（CSS)相分离。</li>
 </ul>
 <h3 id="CSS语法规范"><a href="#CSS语法规范" class="headerlink" title="CSS语法规范"></a>CSS语法规范</h3><p>CSS规则由两个主要部分构成，选择器以及一条或多条声明。<br>h1(选择器) {color（属性）: red（值）;  font-size: 2px;}<br>属性和值为声明（键值对形式）</p>
-<h3 id="代码风格"><a href="#代码风格" class="headerlink" title="代码风格"></a>代码风格</h3><p>样式：用展开格式（多行）<br>大小写：除特殊情况，用小写<br>空格：属性值前，冒号后；选择标签和大括号中间保留空格</p>
+<h3 id="代码风格"><a href="#代码风格" class="headerlink" title="代码风格"></a>代码风格</h3><p>样式：用展开格式（多行）<br>大小写：除特殊情况，<strong>用小写</strong><br>空格：属性值前，冒号后；选择标签和大括号中间保留空格</p>
 <h3 id="css基础选择器"><a href="#css基础选择器" class="headerlink" title="css基础选择器"></a>css基础选择器</h3><h4 id="选择器作用"><a href="#选择器作用" class="headerlink" title="选择器作用"></a>选择器作用</h4><p>作用：用于选择标签的<br><code>h1 &#123;color: red;  font-size: 2px;&#125;</code><br>这里的h1把所有h1选出来<br><code>&#123;color: red;  font-size: 2px;&#125;</code>设置标签样</p>
 <h4 id="选择器分类"><a href="#选择器分类" class="headerlink" title="选择器分类"></a>选择器分类</h4><p>分为基础选择器和复合选择器<br>基础选择器（单个选择器组成）：<br>包括：标签选择器，类选择器，id选择器和通配符选择器（4类）</p>
 <h4 id="标签选择器"><a href="#标签选择器" class="headerlink" title="标签选择器"></a>标签选择器</h4><p>用于选择页面中某一类表签并设置统一样式，但不能设计差异化样式<br>标签名 {<br>             属性1： 属性值1；<br>             属性2： 属性值2；<br>             属性3： 属性值3；<br>…<br>           }</p>
@@ -3867,7 +3861,7 @@
 <h3 id="段落和换行标签（重要）"><a href="#段落和换行标签（重要）" class="headerlink" title="段落和换行标签（重要）"></a>段落和换行标签（重要）</h3><h4 id="段落"><a href="#段落" class="headerlink" title="段落"></a>段落</h4><p>在网页中，要把文字有条理地显示出来，就需要将这些文字分段表示。在HTML标签中，<p>标签用于定义段落，它可以将整个网页分为若干个段落<br>==标签语义==：把HTML文档分割为若干段落</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>我是一个段落标签<span class="tag">&lt;/<span class="name">p</span>&gt;</span>  （表一段）</span><br><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>我是一个段落标签<span class="tag">&lt;/<span class="name">p</span>&gt;</span>  （表第二段）</span><br></pre></td></tr></table></figure>
 
-<p>P为paragrapht(alt+z 自动换行)<br>特点：1. 文本在一个段中会根据浏览器窗口的大小自动换行<br>2.段落和段落之间保有空隙</p>
+<p>P为paragrapht(alt+z 自动换行)<br>特点：1. 文本在一个段中会根据浏览器窗口的大小自动换行<br>            2.段落和段落之间保有空隙</p>
 <h4 id="换行"><a href="#换行" class="headerlink" title="换行"></a>换行</h4><p>在HTML中，一个段落中的文字会从左到右依次排列，直到浏览器窗口右端，然后才自动换行，如果希望某段强制换行显示，就用换行标签<br/>   break打断自己,换行显示。==标签语义==：强制换行.</p>
 <p>特点：单标签，简单开始新一行，跟段落不一样，段落间会插入垂直间距</p>
 <pre><code>&lt;hr /&gt;分隔线
@@ -4316,7 +4310,7 @@
 </li>
 <li><p>作用域不同</p>
 <ul>
-<li>cookie和localStorage在所有同源窗口共享</li>
+<li>cookie和localStorage在所有<strong>同源窗口共享</strong></li>
 <li>sessionStorage不在不同浏览器共享,即使同一页面</li>
 </ul>
 </li>
@@ -4327,11 +4321,11 @@
 <li><p>link和@import的区别</p>
 <ul>
 <li><p>@import只能加载css，低版本浏览器不支持</p>
-<p>link是xhtml标签，无兼容问题</p>
+<p><em><strong>link是xhtml标签，无兼容问题</strong></em></p>
 </li>
-<li><p>link引用css时候页面载入同时加载，@import需要在页面完全加载以后，且它引用的css需要被加载完才加载</p>
+<li><p>link引用css时候页面载入同时加载，**@import需要在页面完全加载以后，且它引用的css需要被加载完才加载**</p>
 </li>
-<li><p>link支持使用js去改变样式，@import不支持，link权重高于@import</p>
+<li><p>link支持使用js去改变样式，@import不支持，<strong>link权重高于@import</strong></p>
 </li>
 </ul>
 </li>
@@ -4352,7 +4346,7 @@
 </li>
 </ul>
 <h2 id="meta-viewport属性"><a href="#meta-viewport属性" class="headerlink" title="meta viewport属性"></a>meta viewport属性</h2><ul>
-<li><p>移动端浏览器通常都在一个比屏幕更宽的虚拟窗口中渲染页面，这个虚拟窗口就是viewport</p>
+<li><p>移动端浏览器通常都在一个比屏幕更宽的虚拟窗口中渲染页面，这个<strong>虚拟窗口就是viewport</strong></p>
 </li>
 <li><p>meta标签作用是让当前viewport宽度等于设备宽度，同时不允许用户手动缩放</p>
 </li>
@@ -4480,6 +4474,15 @@
 
             
 
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">标签</span>
+                
+              </div>
             
 
           </nav>

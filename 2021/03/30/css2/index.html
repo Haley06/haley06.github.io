@@ -87,7 +87,7 @@
 <meta property="og:description" content="Emment语法快速生成html: 标签名+table键； &lt;div&gt;*3   父子关系：  ul&gt;li生成 兄弟： div+p 生成带类名或id的标签，div.(类名)或div#（类名） 如果生成div类名有顺序，则用{＄}p.a＄*5 生成标签里默认显示文字，div{文字内容}文字写在大括号里 div{＄}*5,生成内容为1-5的div  快速生成css:w100:   wi">
 <meta property="og:locale">
 <meta property="article:published_time" content="2021-03-29T19:07:30.000Z">
-<meta property="article:modified_time" content="2021-05-02T01:58:30.541Z">
+<meta property="article:modified_time" content="2021-05-04T10:32:35.241Z">
 <meta property="article:author" content="haley06">
 <meta name="twitter:card" content="summary">
 
@@ -570,7 +570,7 @@
 </code></pre>
 <p>注：<br>1.margin:0  auto;用于块级元素<br>2.行内元素或行内块元素水平居中：给父元素添加text-align:center</p>
 </li>
-<li><p>外边距合并<br>（嵌套块元素垂直外边距塌陷）<br>两个嵌套（父子）关系块元素，父 元素有上边外边距同时子元素也有上外边距，此时会塌陷较大外边距值（给子元素加外边距，父元素移动）<br>解决：<br>1.为父元素指定上边框<br>2.为父元素定义内边距<br>3.为父元素添加overflow:hidden;(多用)<br>盒子有浮动，固定，绝对定位时不会陷。</p>
+<li><p>外边距合并<br>（嵌套块元素垂直外边距塌陷）<br>两个嵌套（父子）关系块元素，父 元素有上边外边距同时子元素也有上外边距，此时会塌陷较大外边距值（给子元素加外边距，父元素移动）<br>解决：<br>1.<strong>为父元素指定上边框</strong><br>2.<strong>为父元素定义内边距</strong><br>3.为父元素添加overflow:hidden;(多用)<br>盒子有浮动，固定，绝对定位时不会陷。</p>
 <h3 id="清除内外边距"><a href="#清除内外边距" class="headerlink" title="清除内外边距"></a>清除内外边距</h3><p>浏览器默认内外边距<br>清除：</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span></span><br><span class="line">    * &#123;</span><br><span class="line"><span class="css">        <span class="attribute">margin</span>: <span class="number">0</span>;</span></span><br><span class="line"><span class="css">        <span class="attribute">padding</span>:<span class="number">0</span>;</span></span><br><span class="line">    &#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span>(通常也为css第一句话)</span><br></pre></td></tr></table></figure>
 
@@ -653,12 +653,10 @@
 <pre><code>    在浮动元素末尾添加一个空标签
 </code></pre>
 <p>例：<code>&lt;div style=“clear both”&gt;&lt;/div&gt;</code>或其他<code>&lt;br/&gt;</code>等<br>==新添标签必须为块级元素==（此方法结构化差，不常用）<br>‌2.父级加overflow<br>找到父盒子添加     overflow:hidden(多用）/auto/scroll<br>(但此方法无法显示溢出部分）<br>‌3.父级加after伪元素<br>css先写以下代码</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span></span><br><span class="line">     .clearfix:after &#123;</span><br><span class="line"><span class="css">            <span class="attribute">content</span>: <span class="string">&quot;&quot;</span>;</span></span><br><span class="line"><span class="css">            <span class="attribute">display</span>: block;</span></span><br><span class="line"><span class="css">            <span class="attribute">height</span>: <span class="number">0</span>;</span></span><br><span class="line"><span class="css">            <span class="attribute">clear</span>: both;</span></span><br><span class="line"><span class="css">            <span class="attribute">visibility</span>: hidden;</span></span><br><span class="line">        &#125;</span><br><span class="line">        .clearfix &#123;</span><br><span class="line"><span class="css">            <span class="comment">/* IE6、7专有 */</span></span></span><br><span class="line"><span class="css">            *zoom: <span class="number">1</span>;</span></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="css">     <span class="selector-class">.clearfix</span><span class="selector-pseudo">::after</span> &#123;</span></span><br><span class="line"><span class="css">            <span class="attribute">content</span>: <span class="string">&quot;&quot;</span>;</span></span><br><span class="line"><span class="css">            <span class="attribute">display</span>: block;</span></span><br><span class="line"><span class="css">            <span class="attribute">height</span>: <span class="number">0</span>;</span></span><br><span class="line"><span class="css">            <span class="attribute">clear</span>: both;</span></span><br><span class="line"><span class="css">            <span class="attribute">visibility</span>: hidden;</span></span><br><span class="line">        &#125;</span><br><span class="line">        .clearfix &#123;</span><br><span class="line"><span class="css">            <span class="comment">/* IE6、7专有 */</span></span></span><br><span class="line"><span class="css">            *zoom: <span class="number">1</span>;</span></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
 <p>然后找到父盒子添加类属性值（clearfix)。(常用)<br>‌4.父级加双伪元素<br>写以下代码到css</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span></span><br><span class="line">    .clearfix:before,</span><br><span class="line">    .clearfix:after &#123;</span><br><span class="line"><span class="css">        <span class="attribute">content</span>: <span class="string">&quot;&quot;</span>;</span></span><br><span class="line"><span class="css">        <span class="attribute">display</span>: block;</span></span><br><span class="line">    &#125;</span><br><span class="line"><span class="css">    <span class="selector-class">.clearfix</span><span class="selector-pseudo">::after</span> &#123;</span></span><br><span class="line"><span class="css">        <span class="attribute">clear</span>: both;</span></span><br><span class="line">    &#125;</span><br><span class="line">    .clearfix &#123;</span><br><span class="line"><span class="css">        <span class="comment">/* IE6、7专有 */</span></span></span><br><span class="line"><span class="css">        *zoom: <span class="number">1</span>;</span></span><br><span class="line">    &#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line">  </span><br></pre></td></tr></table></figure>
-
-
 
 
 
@@ -740,7 +738,7 @@
 <tr>
 <td>relative 相对</td>
 <td>否（保留标准流中位置）</td>
-<td>相对自身位置移动</td>
+<td><strong>相对自身位置移动</strong></td>
 <td>是</td>
 </tr>
 <tr>
@@ -907,6 +905,15 @@
 
             
 
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">标签</span>
+                
+              </div>
             
 
           </nav>
